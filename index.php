@@ -50,11 +50,11 @@ $hotels = [
     ],
 ];
 
-foreach ($hotels as $hotel) {
-    foreach ($hotel as $key => $value) {
-        echo "<div> $key: $value </div>";
-    }
-}
+// foreach ($hotels as $hotel) {
+//     foreach ($hotel as $key => $value) {
+//         echo "<div> $key: $value </div>";
+//     }
+// }
 
 
 ?>
@@ -80,6 +80,27 @@ foreach ($hotels as $hotel) {
         Boolking
     </h1>
 
+    <!-- TABELLA  -->
+    <table class="table border my-5 w-50 mx-auto">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Keys</th>
+                <th scope="col">Values </th>
+            </tr>
+        <tbody>
+            <?php foreach ($hotels as $index => $hotel) : ?>
+                <tr>
+
+                    <?php foreach ($hotel as $key => $value) : ?>
+                        <td> <?= $index + 1 ?>: </td>
+                        <td> <?= $key ?>: </td>
+                        <td> <?= $value ?> </td>
+                </tr>
+        </tbody>
+    <?php endforeach  ?>
+<?php endforeach  ?>
+    </table>
 
 </body>
 
