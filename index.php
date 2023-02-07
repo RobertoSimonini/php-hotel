@@ -50,10 +50,15 @@ $hotels = [
     ],
 ];
 
+foreach ($hotels as $hotel) {
+    foreach ($hotel as $key => $value) {
+    }
+}
+
+$keys = (array_keys($hotel));
+
 // foreach ($hotels as $hotel) {
-//     foreach ($hotel as $key => $value) {
-//         echo "<div> $key: $value </div>";
-//     }
+//     $name = $hotel['name'];
 // }
 
 
@@ -73,33 +78,41 @@ $hotels = [
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css' integrity='sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==' crossorigin='anonymous' />
 
 
+
 </head>
 
-<body class="text-center py-3">
-    <h1 class="text-primary">
+
+<body class="py-3">
+    <h1 class="text-primary text-center">
         Boolking
     </h1>
 
+    <form action="" class="form-check mx-auto d-flex align-items-center w-100 justify-content-center">
+        <select class="form-select w-25" aria-label="Default select example">
+            <option selected name="parking">Change filters</option>
+            <option value="parking">Availabe Parking</option>
+        </select>
+        <button type="submit" class="btn text-black btn-outline-primary">Filter</button>
+    </form>
+
     <!-- TABELLA  -->
     <table class="table border my-5 w-50 mx-auto">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Keys</th>
-                <th scope="col">Values </th>
-            </tr>
-        <tbody>
-            <?php foreach ($hotels as $index => $hotel) : ?>
-                <tr>
+        <thead class="bg-warning">
+            <tr class="p-5">
+                <?php foreach ($keys as $single_key) : ?>
+                    <td scope="col"> <?= $single_key ?> </td>
+                <?php endforeach ?>
 
-                    <?php foreach ($hotel as $key => $value) : ?>
-                        <td> <?= $index + 1 ?>: </td>
-                        <td> <?= $key ?>: </td>
-                        <td> <?= $value ?> </td>
+        <tbody>
+            <?php foreach ($hotels as $hotel) : ?>
+                <tr>
+                    <td> <?= $hotel['name'] ?> </td>
+                    <td> <?= $hotel['description'] ?> </td>
+                    <td> <?= $hotel['parking'] ?> </td>
+                    <td> <?= $hotel['vote'] ?> </td>
+                    <td> <?= $hotel['distance_to_center'] ?> </td>
                 </tr>
-        </tbody>
-    <?php endforeach  ?>
-<?php endforeach  ?>
+            <?php endforeach ?>
     </table>
 
 </body>
